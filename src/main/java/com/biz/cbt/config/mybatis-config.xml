@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+  
+  
+
+
+
+<configuration>
+
+<settings>
+	<setting name="jdbcTypeForNull" value="NULL"/>
+</settings>
+	<typeAliases>
+		<typeAlias type="com.biz.cbt.persistence.CbtDTO" alias="CbtDTO"/>
+	</typeAliases>
+
+
+<environments default="mysqlConnection">
+	<environment id="mysqlConnection">
+		<transactionManager type="JDBC"/>
+		
+		<dataSource type="POOLED">
+		
+			<property name="driver" 
+						value="com.mysql.jdbc.Driver"/>
+				<property name="url" 
+					value="jdbc:mysql://localhost:3306/mydb"/>
+				<property name="username" value="root"/>				<!-- 실제사용하는 아이ㅣㄷ와 이름을  -->
+				<property name="password" value="1234"/>
+		
+		
+		</dataSource>
+		
+	</environment>
+</environments>
+
+
+
+<mappers>
+	<mapper resource="com/biz/cbt/config/mapper/cbt-mapper.xml"/>
+</mappers>
+
+</configuration>
+

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.biz.cbt.dao.CbtDao">
+
+	<select id="selectAll" resultType="CbtDTO">
+		SELECT * FROM tbl_cbt
+	</select>
+
+
+	<select id="selectToMaxCode" resultType="CbtDTO">
+		SELECT cb_code FROM
+		tbl_cbt
+	</select>
+
+	<select id="selectByCode" resultType="CbtDTO">
+		SELECT * FROM tbl_cbt WHERE cb_code = #{cb_code}
+	</select>
+	
+	<select id="selectByMC" resultType="CbtDTO">
+	    SELECT * FROM tbl_cbt WHERE cb_af = #{cb_af} or cb_a1 = #{cb_a1} or cb_a2 = #{cb_a2} or cb_a3 = #{cb_a3}
+	</select>
+
+
+
+
+	<insert id="insert" parameterType="CbtDTO">
+
+		INSERT INTO tbl_cbt(cb_code,
+		cb_q, cb_af, cb_a1, cb_a2, cb_a3)
+		VALUES(#{cb_code}, #{cb_q}, #{cb_af},
+		#{cb_a1}, #{cb_a2}, #{cb_a3})
+
+	</insert>
+	
+	<delete id="delete" parameterType="CbtDTO">
+		DELETE FROM tbl_cbt WHERE cb_code = #{cb_code}
+	</delete>
+
+	<update id="update" parameterType="CbtDTO">
+		UPDATE tbl_cbt SET cb_q =
+		#{cb_q}, cb_af = #{cb_af}, cb_a1 = #{cb_a1}, cb_a2 = #{cb_a2}, cb_a3 =
+		#{cb_a3} WHERE cb_code = #{cb_code}
+	</update>
+
+</mapper>
